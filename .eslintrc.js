@@ -238,10 +238,7 @@ module.exports = {
       "last"
     ],
     "sort-imports": "error",
-    "sort-keys": [
-      "error",
-      "desc"
-    ],
+    "sort-keys": "off",
     "sort-vars": "error",
     "space-before-blocks": "off",
     "space-before-function-paren": "off",
