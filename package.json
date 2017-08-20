@@ -4,7 +4,8 @@
   "description": "Sequelize Models for FileDepot",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint models"
   },
   "repository": {
     "type": "git",
@@ -26,7 +27,10 @@
     "pg": "^7.1.2",
     "pg-hstore": "^2.3.2",
     "sequelize": "^4.6.0",
-    "sqlite3": "^3.1.9",
-    "tedious": "^2.0.0"
+    "tedious": "^2.0.0",
+    "sqlite3": "^3.1.9"
+  },
+  "devDependencies": {
+    "eslint": "^4.5.0"
   }
 }
