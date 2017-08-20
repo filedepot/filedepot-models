@@ -20,5 +20,13 @@
   "bugs": {
     "url": "https://github.com/filedepot/filedepot-models/issues"
   },
-  "homepage": "https://github.com/filedepot/filedepot-models#readme"
+  "homepage": "https://github.com/filedepot/filedepot-models#readme",
+  "dependencies": {
+    "mysql2": "^1.4.1",
+    "pg": "^7.1.2",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.6.0",
+    "sqlite3": "^3.1.9",
+    "tedious": "^2.0.0"
+  }
 }
