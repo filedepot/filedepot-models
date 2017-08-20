@@ -1,7 +1,5 @@
-"use strict";
-
-const fs        = require("fs");
-const path      = require("path");
+const fs = require("fs");
+const path = require("path");
 const Sequelize = require("sequelize");
 
 var db = false;
@@ -18,24 +16,29 @@ if (!process.env.DB_NAME || !process.env.DB_USER || !process.env.DB_PASS || !pro
   );
 
   const MODELS_PATH = path.join(__dirname, 'models');
-  fs
-    .readdirSync(MODELS_PATH)
-    .filter((file) => {
-      // skip all filenames that start with a '.'
-      return (file.indexOf(".") !== 0);
-    })
-    .forEach((file) => {
-      var model = sequelize.import(path.join(MODELS_PATH, file));
-      db[model.name] = model;
-    });
 
-  Object
-    .keys(db)
-    .forEach((modelName) => {
-      if ("associate" in db[modelName]) {
-        db[modelName].associate(db);
-      }
-    });
+  let handleReadDir = (dir) => {
+    dir
+      .filter((file) => {
+        // skip all filenames that start with a '.'
+        return file.indexOf(".") !== 0;
+      })
+      .forEach((file) => {
+        var model = sequelize.import(path.join(MODELS_PATH, file));
+        db[model.name] = model;
+      });
+
+    Object
+      .keys(db)
+      .forEach((modelName) => {
+        if ("associate" in db[modelName]) {
+          db[modelName].associate(db);
+        }
+      });
+  };
+
+  fs
+    .readdir(MODELS_PATH, handleReadDir);
 
   db.sequelize = sequelize;
   db.Sequelize = Sequelize;
