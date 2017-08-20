@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  var key = sequelize.define(
+  const Key = sequelize.define(
     "Key",
     {
       "keyId": {
@@ -18,27 +18,32 @@ module.exports = (sequelize, DataTypes) => {
     {
       "classMethods": {
         associate: (models) => {
-          key.hasMany(models.Token, {
-            "onDelete": "CASCADE",
-            "foreignKey": {
-              allowNull: false
-            }
-          });
-
-          key.belongsTo(models.Bucket);
         }
       },
       "instanceMethods": {
-        "toJSON": function () {
-          // ensure when keys gets dumped as JSON we do not output the secret
-          let rep = this.get({ plain: true });
-          Reflect.deleteProperty(rep.secret);
-          return rep;
-        }
+
       },
       "timestamps": false
     }
   );
 
-  return key;
+  Key.associate = (models) => {
+    Key.hasMany(models.Token, {
+      "onDelete": "CASCADE",
+      "foreignKey": {
+        allowNull: false
+      }
+    });
+
+    Key.belongsTo(models.Bucket);
+  };
+
+  Key.prototype.toJSON = function() {
+    // ensure when keys gets dumped as JSON we do not output the secret
+    let rep = this.get({ plain: true });
+    Reflect.deleteProperty(rep.secret);
+    return rep;
+  };
+
+  return Key;
 };

@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  var token = sequelize.define(
+  const Token = sequelize.define(
     "Token",
     {
       "tokenId": {
@@ -24,14 +24,13 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     {
-      "classMethods": {
-        associate: (models) => {
-          token.belongsTo(models.Key);
-        }
-      },
       "timestamps": false
     }
   );
 
-  return token;
+  Token.associate = (models) => {
+    Token.belongsTo(models.Key);
+  };
+
+  return Token;
 };

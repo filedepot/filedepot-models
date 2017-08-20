@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  var bucket = sequelize.define(
+  const Bucket = sequelize.define(
     "Bucket",
     {
       "bucketId": {
@@ -12,19 +12,18 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     {
-      "classMethods": {
-        associate: (models) => {
-          bucket.hasMany(models.Key, {
-            "onDelete": "CASCADE",
-            "foreignKey": {
-              allowNull: false
-            }
-          });
-        }
-      },
       "timestamps": false
     }
   );
 
-  return bucket;
+  Bucket.associate = (models) => {
+    Bucket.hasMany(models.Key, {
+      "onDelete": "CASCADE",
+      "foreignKey": {
+        allowNull: false
+      }
+    });
+  };
+
+  return Bucket;
 };
