@@ -1,6 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  "use strict";
-  var Bucket = sequelize.define(
+  var bucket = sequelize.define(
     "Bucket",
     {
       "bucketId": {
@@ -15,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       "classMethods": {
         associate: (models) => {
-          Bucket.hasMany(models.Key, {
+          models.Bucket.hasMany(models.Key, {
             "onDelete": "CASCADE",
             "foreignKey": {
               allowNull: false
@@ -27,5 +26,5 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
-  return Bucket;
+  return bucket;
 };

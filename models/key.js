@@ -1,6 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  "use strict";
-  var Key = sequelize.define(
+  var key = sequelize.define(
     "Key",
     {
       "keyId": {
@@ -19,21 +18,21 @@ module.exports = (sequelize, DataTypes) => {
     {
       "classMethods": {
         associate: (models) => {
-          Key.hasMany(models.Token, {
+          models.Key.hasMany(models.Token, {
             "onDelete": "CASCADE",
             "foreignKey": {
               allowNull: false
             }
           });
 
-          Key.belongsTo(models.Bucket);
+          models.Key.belongsTo(models.Bucket);
         }
       },
       "instanceMethods": {
         "toJSON": function () {
           // ensure when keys gets dumped as JSON we do not output the secret
           let rep = this.get({ plain: true });
-          delete rep.secret;
+          Reflect.deleteProperty(rep.secret);
           return rep;
         }
       },
@@ -41,5 +40,5 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
-  return Key;
+  return key;
 };
