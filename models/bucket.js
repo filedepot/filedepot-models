@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       "classMethods": {
         associate: (models) => {
-          models.Bucket.hasMany(models.Key, {
+          bucket.hasMany(models.Key, {
             "onDelete": "CASCADE",
             "foreignKey": {
               allowNull: false

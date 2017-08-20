@@ -18,14 +18,14 @@ module.exports = (sequelize, DataTypes) => {
     {
       "classMethods": {
         associate: (models) => {
-          models.Key.hasMany(models.Token, {
+          key.hasMany(models.Token, {
             "onDelete": "CASCADE",
             "foreignKey": {
               allowNull: false
             }
           });
 
-          models.Key.belongsTo(models.Bucket);
+          key.belongsTo(models.Bucket);
         }
       },
       "instanceMethods": {

@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       "classMethods": {
         associate: (models) => {
-          models.Token.belongsTo(models.Key);
+          token.belongsTo(models.Key);
         }
       },
       "timestamps": false
