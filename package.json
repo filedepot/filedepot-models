@@ -1,6 +1,6 @@
 {
   "name": "filedepot-models",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Sequelize Models for FileDepot",
   "main": "index.js",
   "scripts": {
