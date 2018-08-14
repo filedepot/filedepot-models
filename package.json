@@ -23,14 +23,14 @@
   },
   "homepage": "https://github.com/filedepot/filedepot-models#readme",
   "dependencies": {
-    "mysql2": "^1.5.1",
-    "pg": "^7.4.1",
+    "mysql2": "^1.6.1",
+    "pg": "^7.4.3",
     "pg-hstore": "^2.3.2",
-    "sequelize": "^4.29.0",
-    "sqlite3": "^3.1.13",
-    "tedious": "^2.2.3"
+    "sequelize": "^4.38.0",
+    "sqlite3": "^4.0.2",
+    "tedious": "^2.6.4"
   },
   "devDependencies": {
-    "eslint": "^4.15.0"
+    "eslint": "^4.19.1"
   }
 }
